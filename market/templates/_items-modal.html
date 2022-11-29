@@ -1,0 +1,75 @@
+<!-- Item Info Modal -->
+<div class="modal fade" id="itemInfo-{{ item.item_id }}" tabindex="-1" aria-labelledby="itemInfoLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="itemInfoLabel">{{ item.item_name }}</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        {{ item.item_description }}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+<!--        <button type="button" class="btn btn-primary">Save changes</button>-->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Item Purchase Modal -->
+<div class="modal fade" id="itemPurchase-{{ item.item_id }}" tabindex="-1" aria-labelledby="itemPurchaseLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="itemPurchaseLabel">{{ item.item_name }}</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Confirm purchase of {{ item.item_name }} for {{ item.item_price }}$?
+
+      </div>
+      <div class="modal-footer">
+        <form action="" method="post">
+          {{ buy_form.hidden_tag() }}
+
+          <div>
+            <input id="purchased_item" name="purchased_item" type="hidden" value="{{ item.item_name }}">
+            {{ buy_form.submit() }}
+          </div>
+        </form>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+<!--        <button type="button" class="btn btn-primary">Save changes</button>-->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Sell Item Modal -->
+<div class="modal fade" id="sellItem-{{ item.item_id }}" tabindex="-1" aria-labelledby="sellItemLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="sellItemLabel">{{ item.item_name }}</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to put  {{ item.item_name }} back on the market?
+
+      </div>
+      <div class="modal-footer">
+        <form action="" method="post">
+          {{ sell_form.hidden_tag() }}
+
+          <div>
+            <input id="sold_item" name="sold_item" type="hidden" value="{{ item.item_name }}">
+            {{ sell_form.submit() }}
+          </div>
+        </form>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+<!--        <button type="button" class="btn btn-primary">Save changes</button>-->
+      </div>
+    </div>
+  </div>
+</div>

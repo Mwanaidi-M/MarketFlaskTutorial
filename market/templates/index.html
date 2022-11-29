@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    HOME
+{% endblock %}
+
+{% block content %}
+    <h1 class="text-center">FM-MARKET PLACE</h1>
+    <p class="text-center"> Start Purchasing products by clicking the link below. </p>
+    <a class="btn btn-outline-info d-block w-25 mx-auto" href="{{ url_for('market_page') }}">SHOP NOW</a>
+{% endblock %}

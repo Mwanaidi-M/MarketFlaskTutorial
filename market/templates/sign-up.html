@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    REGISTER
+{% endblock %}
+
+{% block content %}
+    <h3 class="text-center">SIGN UP</h3>
+
+    <form action="" method="post" class="row d-flex justify-content-center">
+        {{ form.hidden_tag() }}
+
+        <div class="col-7 mb-3">
+            {% if form.username.errors %}
+                <ul>
+                {% for error in form.username.errors %}
+                    <li class="text-danger">{{ error }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+
+            {{ form.username.label(class="form-label") }}
+            {{ form.username(class="form-control") }}
+        </div>
+        <div class="col-7 mb-3">
+            {% if form.email.errors %}
+                <ul>
+                {% for error in form.email.errors %}
+                    <li class="text-danger">{{ error }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+
+            {{ form.email.label(class="form-label") }}
+            {{ form.email(class="form-control") }}
+        </div>
+        <div class="col-7 mb-3">
+            {% if form.pwd1.errors %}
+                <ul>
+                {% for error in form.pwd1.errors %}
+                    <li class="text-danger">{{ error }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+
+            {{ form.pwd1.label(class="form-label") }}
+            {{ form.pwd1(class="form-control") }}
+        </div>
+        <div class="col-7 mb-3">
+            {% if form.pwd_confirm.errors %}
+                <ul>
+                {% for error in form.pwd_confirm.errors %}
+                    <li class="text-danger">{{ error }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+
+            {{ form.pwd_confirm.label(class="form-label") }}
+            {{ form.pwd_confirm(class="form-control") }}
+        </div>
+         <div class="col-7 mb-3">
+            {{ form.submit(class="btn btn-outline-danger") }}
+        </div>
+        <div class="col-7">
+            <p>Already a user? <a href="{{ url_for('login_page') }}">LOGIN</a> </p>
+        </div>
+    </form>
+{% endblock %}

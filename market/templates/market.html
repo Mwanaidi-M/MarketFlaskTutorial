@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    MARKET
+{% endblock %}
+
+{% block content %}
+
+
+
+    <div class="container-fluid my-3">
+        <div class="row">
+            <div class="col-7 border">
+                <h3>AVAILABLE ITEMS</h3>
+                <p>Click on one of the items to purchase.</p>
+                <table class="table table-light table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Barcode</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Options</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in m_items %}
+                            {% include '_items-modal.html' %}
+                            <tr>
+                                <td>{{ item.item_id }}</td>
+                                <td>{{ item.item_name }}</td>
+                                <td>{{ item.item_barcode }}</td>
+                                <td>{{ item.item_price }}$</td>
+                                <td>
+                                    <button class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#itemInfo-{{ item.item_id }}">More Info</button>
+                                    <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#itemPurchase-{{ item.item_id }}">Purchase Item</button>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-5 border">
+                <h3>PURCHASED ITEMS</h3>
+                <p>Click the sell button to put an item back on sale.</p>
+                {% if o_items %}
+                <table class="table table-light table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Options</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in o_items %}
+                            {% include '_items-modal.html' %}
+                            <tr>
+                                <td>{{ item.item_id }}</td>
+                                <td>{{ item.item_name }}</td>
+                                <td>{{ item.item_price }}$</td>
+                                <td>
+                                    <button class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#sellItem-{{ item.item_id }}">More Info</button>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+               {% endif %}
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
